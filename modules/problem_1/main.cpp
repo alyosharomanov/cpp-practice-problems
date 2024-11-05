@@ -3,25 +3,17 @@
 //
 
 #include "main.h"
-#include <vector>
-#include <stack>
+
 #include <algorithm>
+#include <stack>
+#include <vector>
 
-using std::vector;
-using std::stack;
-using std::max;
-
-/**
- * Calculate the largest rectangle area that can be formed using the heights.
- * @param heights Vector of heights.
- * @return The maximum area of a rectangle that can be formed.
- */
-int Solution::largestRectangleArea(const vector<int> &heights) {
-    stack<int> indices;
+int Solution::LargestRectangleArea(const std::vector<int>& heights) {
+    std::stack<int> indices;
     int maxArea = 0;
-    const int size = heights.size();
+    const size_t size = heights.size();
 
-    for (int i = 0; i <= size; i++) {
+    for (size_t i = 0; i <= size; i++) {
         // do while the current height is shorter than the top of the stack.
         while (!indices.empty() && (i == size || heights[indices.top()] >= heights[i])) {
             // height of the rectangle.
@@ -37,7 +29,7 @@ int Solution::largestRectangleArea(const vector<int> &heights) {
             }
 
             // update the max area.
-            maxArea = max(maxArea, width * height);
+            maxArea = std::max(maxArea, width * height);
         }
         // save the index of the current height.
         indices.push(i);
@@ -45,23 +37,14 @@ int Solution::largestRectangleArea(const vector<int> &heights) {
     return maxArea;
 }
 
-/**
- * Leetcode 85: Maximal Rectangle
- * https://leetcode.com/problems/maximal-rectangle/description/
- * Given a rows x cols binary matrix filled with 0's and 1's,
- * find the largest rectangle containing only 1's and return its area.
- *
- * @param matrix The binary matrix filled with 0's and 1's.
- * @return The area of the largest rectangle containing only 1's.
- */
-int Solution::maximalRectangle(const vector<vector<char> > &matrix) {
-    if (matrix.empty()) return 0; // matrix is empty, return 0.
+int Solution::MaximalRectangle(const std::vector<std::vector<char> >& matrix) {
+    if (matrix.empty()) return 0;
 
-    const int rows = matrix.size();
-    const int cols = matrix[0].size();
+    const size_t rows = matrix.size();
+    const size_t cols = matrix[0].size();
 
     int maxArea = 0; // max area of the rectangle found so far.
-    vector<int> heights(cols, 0); // the max heights for each row.
+    std::vector<int> heights(cols, 0); // the max heights for each row.
 
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -75,7 +58,7 @@ int Solution::maximalRectangle(const vector<vector<char> > &matrix) {
             }
         }
         // calculate the max area of the rectangle for the current row.
-        maxArea = max(maxArea, largestRectangleArea(heights));
+        maxArea = std::max(maxArea, LargestRectangleArea(heights));
     }
     return maxArea;
 }

@@ -1,15 +1,14 @@
 cc_library(
     name = "problem_1",
-    srcs = ["main.cpp", "main.h"],
+    srcs = ["main.cpp"],
+    hdrs = ["main.h"],
 )
 
 cc_test(
     name = "problem_1_test",
-    size = "small",
-    srcs = ["test.cpp"],
+    srcs = ["problem_1_test.cpp"],
     deps = [
         ":problem_1",
         "@googletest//:gtest_main",
     ],
-    args = ["--gtest_color=yes"],
 )
