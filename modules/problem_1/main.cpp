@@ -21,12 +21,7 @@ int Solution::LargestRectangleArea(const std::vector<int>& heights) {
             indices.pop();
 
             // width of the rectangle.
-            int width;
-            if (indices.empty()) {
-                width = i;
-            } else {
-                width = i - indices.top() - 1;
-            }
+            int width = indices.empty() ? i : (i - indices.top() - 1);
 
             // update the max area.
             maxArea = std::max(maxArea, width * height);

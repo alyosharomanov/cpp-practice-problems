@@ -7,7 +7,7 @@
 
 class Solution {
 public:
-    // Calculate the largest rectangle area that can be formed using a list of heights.
+    // Calculate the largest rectangle area that can be formed using a vector of heights.
     // If we imagine the heights as a histogram, the largest rectangle area is the maximum.
     // Example: For heights {2,1,5,6,2,3}, largest rectangle area is 10.
     //
