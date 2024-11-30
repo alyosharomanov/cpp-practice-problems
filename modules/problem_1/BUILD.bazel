@@ -1,0 +1,14 @@
+cc_library(
+    name = "problem_1",
+    srcs = ["main.cpp"],
+    hdrs = ["main.h"],
+)
+
+cc_test(
+    name = "problem_1_test",
+    srcs = ["problem_1_test.cpp"],
+    deps = [
+        ":problem_1",
+        "@googletest//:gtest_main",
+    ],
+)
