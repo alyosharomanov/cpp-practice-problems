@@ -9,9 +9,9 @@
 
 class Solution {
 public:
-    // LeetCode 87 Scramble String
-    // Check if the string s1 is a scrambled string of string s2.
-    // Uses a recursive approach with memoization to determine if the given conditions hold true.
+    // LeetCode 87 Scramble String: https://leetcode.com/problems/scramble-string/
+    // Given two strings s1 and s2 of the same length,
+    // return true if s2 is a scrambled string of s1, otherwise, return false.
     //
     // Time Complexity: O(n!) because of the recursive call
     // Space Complexity: O(n^2) because we store intermediate results in a map
