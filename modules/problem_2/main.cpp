@@ -17,12 +17,11 @@ bool Solution::RecursiveSolve(const std::string& s1, const std::string& s2) {
 
     // the key will be a tuple of input and output string
     const std::tuple<std::string, std::string> key = std::make_tuple(s1, s2);
-    if (mpp.find(key) != mpp.end())
-        return mpp[key];
+    if (intermediate_result_map.find(key) != intermediate_result_map.end())
+        return intermediate_result_map[key];
 
     // iterate all split points
     for (size_t i = 1; i < size; i++) {
-
         // create substrings for s1 and s2
         std::string s1Left = s1.substr(0, i);
         std::string s1Right = s1.substr(i, size);
@@ -31,7 +30,7 @@ bool Solution::RecursiveSolve(const std::string& s1, const std::string& s2) {
 
         // no swap
         if (RecursiveSolve(s1Left, s2Left) && RecursiveSolve(s1Right, s2Right))
-            return mpp[key] = true;
+            return intermediate_result_map[key] = true;
 
         // create substrings for s2 with swapped parts
         std::string s2RightSwapped = s2.substr(size - i, i);
@@ -39,11 +38,11 @@ bool Solution::RecursiveSolve(const std::string& s1, const std::string& s2) {
 
         // with swap
         if (RecursiveSolve(s1Left, s2RightSwapped) && RecursiveSolve(s1Right, s2LeftSwapped))
-            return mpp[key] = true;
+            return intermediate_result_map[key] = true;
     }
 
     // otherwise, return false
-    return mpp[key] = false;
+    return intermediate_result_map[key] = false;
 }
 
 bool Solution::IsScramble(const std::string& s1, const std::string& s2) {

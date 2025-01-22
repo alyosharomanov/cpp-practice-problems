@@ -30,5 +30,5 @@ private:
     bool RecursiveSolve(const std::string& s1, const std::string& s2);
 
     // map to store the results intermediate steps
-    std::map<std::tuple<std::string, std::string>, bool> mpp;;
+    std::map<std::tuple<std::string, std::string>, bool> intermediate_result_map;;
 };
